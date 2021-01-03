@@ -1,0 +1,2 @@
+module Rpictorgrify
+end

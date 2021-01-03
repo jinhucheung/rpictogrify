@@ -1,0 +1,6 @@
+.bundle/
+log/*.log
+pkg/
+*.gem
+.idea
+.byebug_history
