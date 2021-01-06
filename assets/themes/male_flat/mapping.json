@@ -1,0 +1,74 @@
+{
+  "name": "Male Flat",
+  "viewBox": "0 0 200 200",
+  "shapes": {
+    "body": {
+      "length": 1,
+      "fill": "skin",
+      "currentColor": "#ffbd9d"
+    },
+    "beard": {
+      "length": 5,
+      "fill": "foreground",
+      "currentColor": "#84483d"
+    },
+    "nose": {
+      "length": 5
+    },
+    "mouth": {
+      "length": 5
+    },
+    "eye": {
+      "length": 5,
+      "fill": "eye",
+      "currentColor": "#323232"
+    },
+    "eyebrow": {
+      "length": 5
+    },
+    "hair": {
+      "length": 9,
+      "fill": "foreground",
+      "currentColor": "#84483d"
+    }
+  },
+  "colors": {
+    "background": [
+      "#d50000",
+      "#c51162",
+      "#aa00ff",
+      "#6200ea",
+      "#304ffe",
+      "#2962ff",
+      "#00b8d4",
+      "#00bfa5",
+      "#ffab00",
+      "#0091ea"
+    ],
+    "foreground": [
+      "#4e342e",
+      "#18ffff",
+      "#424242",
+      "#37474f",
+      "#ffb74d",
+      "#fff176",
+      "#f5f5f5",
+      "#1E4063"
+    ],
+    "eye": [
+      "#2e7d32",
+      "#1565c0",
+      "#4e342e",
+      "#424242",
+      "#000000"
+    ],
+    "skin": [
+      "#FFBFA1",
+      "#FFC7A3",
+      "#FDD6BE",
+      "#bcaaa4",
+      "#a1887f",
+      "#8d6e63"
+    ]
+  }
+}

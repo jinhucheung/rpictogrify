@@ -1,10 +1,10 @@
 require 'pathname'
 require 'logger'
 
-require 'rpictorgrify/configuration'
-require 'rpictorgrify/generator'
+require 'rpictogrify/configuration'
+require 'rpictogrify/generator'
 
-module Rpictorgrify
+module Rpictogrify
   class << self
     def generate(text, theme: nil)
       Generator.new(text, theme: theme || config.theme).process
@@ -20,6 +20,14 @@ module Rpictorgrify
 
     def root
       @root ||= Pathname.new(File.expand_path('../..', __FILE__))
+    end
+
+    def assets_path
+      @assets_path ||= root.join('assets')
+    end
+
+    def themes_assets_path
+      @themes_assets_path ||= assets_path.join('themes')
     end
 
     def logger

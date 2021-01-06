@@ -1,3 +1,5 @@
+require 'rpictogrify/theme'
+
 module Rpictogrify
   class Generator
     attr_reader :text, :theme
