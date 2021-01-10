@@ -1,14 +1,12 @@
-require 'rpictogrify/theme'
+require 'rpictogrify/pictogram'
 
 module Rpictogrify
-  class Generator
-    attr_reader :text, :theme
+  module Generator
+    extend self
 
-    def initialize(text, theme: nil)
-      @text = text
-      @theme = theme || Rpictorgrify.config.theme
+    def call(text, theme = nil)
+      pictogram = Rpictogrify::Pictogram.new(text, theme)
+      pictogram.generate
     end
-
-    def process; end
   end
 end

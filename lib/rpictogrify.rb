@@ -3,11 +3,12 @@ require 'logger'
 
 require 'rpictogrify/configuration'
 require 'rpictogrify/generator'
+require 'rpictogrify/inflector'
 
 module Rpictogrify
   class << self
-    def generate(text, theme: nil)
-      Generator.new(text, theme: theme || config.theme).process
+    def generate(text, theme = nil)
+      Generator.call(text, theme || config.theme)
     end
 
     def config
