@@ -1,5 +1,10 @@
+# frozen_string_literal: true
+
+require 'nokogiri'
+
 require 'pathname'
 require 'logger'
+require 'base64'
 
 require 'rpictogrify/configuration'
 require 'rpictogrify/generator'
@@ -7,8 +12,10 @@ require 'rpictogrify/inflector'
 
 module Rpictogrify
   class << self
-    def generate(text, theme = nil)
-      Generator.call(text, theme || config.theme)
+    # example
+    #   Rpictogrify.generate 'jim', theme: :avataars_male
+    def generate(text, options = {})
+      Generator.call(text, options)
     end
 
     def config

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'forwardable'
 require 'singleton'
 require 'json'
@@ -10,7 +12,7 @@ module Rpictogrify
 
       attr_reader :mapping, :resource, :ident
       def_delegators :instance, :mapping, :resource, :ident,
-                                :shapes, :colors, :width, :height
+                                :width, :height, :shapes, :colors, :symbol
 
       def initialize
         @ident    = get_ident
@@ -34,6 +36,10 @@ module Rpictogrify
         mapping['colors']
       end
 
+      def symbol(id)
+        resource.at_xpath("//*[@id='#{id}']")
+      end
+
       private
 
       def get_ident
@@ -45,7 +51,7 @@ module Rpictogrify
       end
 
       def parse_resource
-        File.read(Rpictogrify.themes_assets_path.join(ident, 'resource.svg'))
+        Nokogiri.XML File.read(Rpictogrify.themes_assets_path.join(ident, 'resource.svg'))
       end
 
       def view_box

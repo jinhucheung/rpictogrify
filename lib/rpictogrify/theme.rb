@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rpictogrify/themes/base'
 require 'rpictogrify/themes/avataars_female'
 require 'rpictogrify/themes/avataars_male'

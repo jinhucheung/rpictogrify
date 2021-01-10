@@ -1,23 +1,69 @@
+# frozen_string_literal: true
+
 require 'rpictogrify/theme'
 
 module Rpictogrify
   class Pictogram
-    attr_reader :text, :theme, :uid
+    # BUMP UP if avatar algorithm changes
+    VERSION = 1
 
-    def initialize(text, theme = nil)
-      @text  = text
-      @theme = Rpictogrify::Theme.find(theme)
-      @uid   = generate_uid
+    attr_reader :text, :options, :theme, :uid
+
+    def initialize(text, options = {})
+      @text    = text
+      @options = options
+      @theme   = Rpictogrify::Theme.find(options[:theme] || Rpictogrify.config.theme)
+      @uid     = generate_uid
     end
 
-    def generate; end
-
-    def width
-      theme.width
+    def generate
+      File.write(path, svg) unless File.exist?(path)
+      path
     end
 
-    def height
-      theme.height
+    def svg
+      includes = symbols.map do |shape, symbol|
+        fillable = fill[shape] ? "fill='#{fill[shape]}'" : ''
+        "<svg class='#{shape}' #{fillable} xmlns='http://www.w3.org/2000/svg'>#{symbol}</svg>"
+      end
+
+      <<-XML.strip
+        <svg viewBox="0 0 #{size} #{size}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g>
+            <rect fill="#{colors['background']}" x="0" y="0" width="#{size}" height="#{size}"></rect>
+            #{includes.join("\n")}
+          </g>
+        </svg>
+      XML
+    end
+
+    def base64
+      "data:image/svg+xml;base64,#{Base64.encode64(svg)[0...-1]}"
+    end
+
+    def size
+      @size ||= options[:size] || Rpictogrify.config.weight || theme.width || 300
+    end
+
+    def path
+      @path ||= begin
+        dir = File.join(self.class.base_path, theme.ident)
+        FileUtils.mkdir_p(dir)
+
+        File.join(dir, "#{[text, uid, size].join('-')}.svg")
+      end
+    end
+
+    class << self
+      def base_path
+        @base_path ||= File.join (Rpictogrify.config.base_path || 'public/system'), 'rpictogrify', "#{VERSION}"
+      end
+    end
+
+    private
+
+    def generate_uid
+      text.hash.abs.to_s.gsub('0', '1')
     end
 
     def shapes
@@ -42,10 +88,12 @@ module Rpictogrify
       end
     end
 
-    private
-
-    def generate_uid
-      text.hash.abs.to_s.gsub('0', '1')
+    def symbols
+      @symbols ||= shapes.inject({}) do |result, (shape, value)|
+        symbol = theme.symbol("#{shape}-#{value}")
+        result[shape] = symbol&.children.to_s.gsub('\n', '')
+        result
+      end
     end
   end
 end

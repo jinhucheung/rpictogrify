@@ -13,6 +13,8 @@ Gem::Specification.new do |s|
   s.summary     = "Ruby version of the pictogrify to generate unique pictograms"
   s.license     = "MIT"
 
-  s.files = Dir["{lib, vendor}/**/*", "MIT-LICENSE", "README.md"]
+  s.files = Dir["{lib, assets}/**/*", "MIT-LICENSE", "README.md"]
   s.test_files = Dir["spec/**/*"]
+
+  s.add_dependency "nokogiri", ">= 1.4.4"
 end
