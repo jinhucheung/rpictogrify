@@ -42,7 +42,7 @@ module Rpictogrify
     end
 
     def size
-      @size ||= options[:size] || Rpictogrify.config.weight || theme.width || 300
+      @size ||= theme.width || 300
     end
 
     def path
@@ -50,13 +50,13 @@ module Rpictogrify
         dir = File.join(self.class.base_path, theme.ident)
         FileUtils.mkdir_p(dir)
 
-        File.join(dir, "#{[text, uid, size].join('-')}.svg")
+        File.join(dir, "#{[text, uid].join('-')}.svg")
       end
     end
 
     class << self
       def base_path
-        @base_path ||= File.join (Rpictogrify.config.base_path || 'public/system'), 'rpictogrify', "#{VERSION}"
+        File.join (Rpictogrify.config.base_path || 'public/system'), 'rpictogrify', "#{VERSION}"
       end
     end
 

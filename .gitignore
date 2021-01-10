@@ -1,5 +1,5 @@
 .bundle/
-.public/
+public/
 log/*.log
 pkg/
 *.gem
