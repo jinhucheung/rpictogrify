@@ -10,7 +10,7 @@ module Rpictogrify
     attr_reader :text, :options, :theme, :uid
 
     def initialize(text, options = {})
-      @text    = text
+      @text    = text.to_s
       @options = options
       @theme   = Rpictogrify::Theme.find(options[:theme] || Rpictogrify.config.theme)
       @uid     = generate_uid

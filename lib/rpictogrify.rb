@@ -3,7 +3,6 @@
 require 'nokogiri'
 
 require 'pathname'
-require 'logger'
 require 'base64'
 
 require 'rpictogrify/configuration'
@@ -36,10 +35,6 @@ module Rpictogrify
 
     def themes_assets_path
       @themes_assets_path ||= assets_path.join('themes')
-    end
-
-    def logger
-      @logger ||= Logger.new(STDOUT)
     end
   end
 end

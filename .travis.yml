@@ -1,0 +1,12 @@
+language: ruby
+
+env:
+  - USE_OFFICIAL_GEM_SOURCE=1
+
+rvm:
+  - 2.6.1
+
+before_script:
+  - bundle install
+
+script: bundle exec rspec

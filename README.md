@@ -1,6 +1,14 @@
+[![Gem Version](https://badge.fury.io/rb/rpictogrify.svg)](https://badge.fury.io/rb/rpictogrify)
+[![Build Status](https://travis-ci.org/jinhucheung/rpictogrify.svg?branch=master)](https://travis-ci.org/jinhucheung/rpictogrify)
+
 # Rpictogrify
 
-Ruby version of the [pictogrify](https://github.com/luciorubeens/pictogrify) to generate unique pictograms.
+<p align="center">
+  <h2 align="center">Rpictogrify</h2>
+  <p align="center">Ruby version of the <a href="https://github.com/luciorubeens/pictogrify">pictogrify</a> to generate unique pictograms</p>
+</p>
+
+<p align="center"><img src="https://i.imgur.com/V7WcroX.png" width="600px" alt="Avatar"></p>
 
 ## Installation
 
@@ -36,7 +44,7 @@ end
 ## Usage
 
 ```ruby
-Rpictogrify.generate 'jim.cheung'                           #=> public/system/rpictogrify/1/monsters/jim.cheung-1512422874962937463.svg
+Rpictogrify.generate 'jim.cheung'                          #=> public/system/rpictogrify/1/monsters/jim.cheung-1512422874962937463.svg
 Rpictogrify.generate 'jim.cheung', theme: :avataars_male   #=> public/system/rpictogrify/1/avataars_male/jim.cheung-2935966159678137421.svg
 ```
 
