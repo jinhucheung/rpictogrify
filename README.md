@@ -1,8 +1,6 @@
 [![Gem Version](https://badge.fury.io/rb/rpictogrify.svg)](https://badge.fury.io/rb/rpictogrify)
 [![Build Status](https://travis-ci.org/jinhucheung/rpictogrify.svg?branch=master)](https://travis-ci.org/jinhucheung/rpictogrify)
 
-# Rpictogrify
-
 <p align="center">
   <h2 align="center">Rpictogrify</h2>
   <p align="center">Ruby version of the <a href="https://github.com/luciorubeens/pictogrify">pictogrify</a> to generate unique pictograms</p>
