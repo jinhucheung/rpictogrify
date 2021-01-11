@@ -63,7 +63,7 @@ module Rpictogrify
     private
 
     def generate_uid
-      text.hash.abs.to_s.gsub('0', '1')
+      text.to_s.to_i(36).to_s.gsub('0', '1')
     end
 
     def shapes
