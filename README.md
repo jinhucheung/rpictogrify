@@ -46,7 +46,7 @@ Rpictogrify.generate 'jim.cheung'                          #=> 'public/system/rp
 Rpictogrify.generate 'jim.cheung', theme: :avataars_male   #=> 'public/system/rpictogrify/1/avataars_male/jim.cheung-2935966159678137421.svg'
 ```
 
-### Controllers / Views
+### Controller / View
 
 There is a helper for this, you need to include `Rpictogrify::Helper` in your controller or helper. e.g. `ApplicationHelper`
 
@@ -60,6 +60,7 @@ Then you can use the following methods in views.
 rpictogrify_for('jim', theme: :monsters)          #=> 'public/system/rpictogrify/1/monsters/jim.cheung-1512422874962937463.svg'
 rpictogrify_url('jim')                            #=> '/system/rpictogrify/1/monsters/jim.cheung-1512422874962937463.svg'
 rpictogrify_tag('jim', html: {class: :avatar})    #=> '<img class="avatar" src="/system/rpictogrify/1/monsters/jim.cheung-1512422874962937463.svg" alt="jim" />'
+rpictogrify_url_for('public/system/rpictogrify/1/monsters/jim.cheung-1512422874962937463.svg') #=> '/system/rpictogrify/1/monsters/jim.cheung-1512422874962937463.svg'
 ```
 
 ### Model

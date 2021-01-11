@@ -6,8 +6,12 @@ module Rpictogrify
       Rpictogrify.generate(text, options)
     end
 
+    def rpictogrify_url_for(path)
+      Rpictogrify.path_to_url(path)
+    end
+
     def rpictogrify_url(text, options = {})
-      Rpictogrify.path_to_url(rpictogrify_for(text, options))
+      rpictogrify_url_for(rpictogrify_for(text, options))
     end
 
     def rpictogrify_tag(text, options = {})
