@@ -34,7 +34,7 @@ module Rpictogrify
       end
 
       def rpictogrify_options
-        options = self.class.rpictogrify_settings[:options] || {}
+        options = (self.class.rpictogrify_settings[:options] || {}).dup
         if options[:theme]
           if options[:theme].respond_to?(:call)
             options[:theme] = self.instance_exec(&options[:theme])
