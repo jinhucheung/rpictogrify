@@ -42,8 +42,44 @@ end
 ## Usage
 
 ```ruby
-Rpictogrify.generate 'jim.cheung'                          #=> public/system/rpictogrify/1/monsters/jim.cheung-1512422874962937463.svg
-Rpictogrify.generate 'jim.cheung', theme: :avataars_male   #=> public/system/rpictogrify/1/avataars_male/jim.cheung-2935966159678137421.svg
+Rpictogrify.generate 'jim.cheung'                          #=> 'public/system/rpictogrify/1/monsters/jim.cheung-1512422874962937463.svg'
+Rpictogrify.generate 'jim.cheung', theme: :avataars_male   #=> 'public/system/rpictogrify/1/avataars_male/jim.cheung-2935966159678137421.svg'
+```
+
+### Controllers / Views
+
+There is a helper for this, you need to include `Rpictogrify::Helper` in your controller or helper. e.g. `ApplicationHelper`
+
+```ruby
+include Rpictogrify::Helper
+```
+
+Then you can use the following methods in views.
+
+```ruby
+rpictogrify_for('jim', theme: :monsters)          #=> 'public/system/rpictogrify/1/monsters/jim.cheung-1512422874962937463.svg'
+rpictogrify_url('jim')                            #=> '/system/rpictogrify/1/monsters/jim.cheung-1512422874962937463.svg'
+rpictogrify_tag('jim', html: {class: :avatar})    #=> '<img class="avatar" src="/system/rpictogrify/1/monsters/jim.cheung-1512422874962937463.svg" alt="jim" />'
+```
+
+### Model
+
+You can include `Rpictogrify::Extension` in your model class. e.g. `User` model
+
+```ruby
+class User
+  include Rpictogrify::Extension
+
+  rpictogrify_on :username, theme: -> { gender == :male ? :avataars_male : :avataars_female }
+  # rpictogrify_on :username, theme: :avataars_male
+end
+```
+
+Then you have the following methods in user
+
+```ruby
+@user.rpictogrify_path      #=> 'public/system/rpictogrify/1/monsters/jim.cheung-1512422874962937463.svg'
+@user.rpictogrify_url       #=> '/system/rpictogrify/1/monsters/jim.cheung-1512422874962937463.svg'
 ```
 
 ## Contributing

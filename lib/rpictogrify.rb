@@ -8,6 +8,8 @@ require 'base64'
 require 'rpictogrify/configuration'
 require 'rpictogrify/generator'
 require 'rpictogrify/inflector'
+require 'rpictogrify/helper'
+require 'rpictogrify/extension'
 
 module Rpictogrify
   class << self
@@ -35,6 +37,10 @@ module Rpictogrify
 
     def themes_assets_path
       @themes_assets_path ||= assets_path.join('themes')
+    end
+
+    def path_to_url(path)
+      path.to_s.sub('public/', '/')
     end
   end
 end

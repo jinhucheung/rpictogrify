@@ -1,16 +1,14 @@
 PATH
   remote: .
   specs:
-    rpictogrify (0.1.0)
+    rpictogrify (0.2.0)
       nokogiri (>= 1.4.4)
 
 GEM
   remote: https://rubygems.org/
   specs:
     diff-lcs (1.4.4)
-    mini_portile2 (2.5.0)
-    nokogiri (1.11.1)
-      mini_portile2 (~> 2.5.0)
+    nokogiri (1.11.1-x86_64-linux)
       racc (~> 1.4)
     racc (1.5.2)
     rspec (3.10.0)
