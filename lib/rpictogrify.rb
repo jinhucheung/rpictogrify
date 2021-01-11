@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'nokogiri'
+require 'xxhash'
 
 require 'pathname'
 require 'base64'

@@ -63,7 +63,7 @@ module Rpictogrify
     private
 
     def generate_uid
-      text.to_s.each_char.sum(&:ord).abs.to_s.gsub('0', '1')
+      XXhash.xxh32(text.to_s).abs.to_s.gsub('0', '1')
     end
 
     def shapes

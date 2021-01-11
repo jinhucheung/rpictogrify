@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "nokogiri", ">= 1.4.4"
+  s.add_dependency "xxhash", ">= 0.0.1"
 
   s.add_development_dependency "rspec"
 end
