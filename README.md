@@ -42,8 +42,8 @@ end
 ## Usage
 
 ```ruby
-Rpictogrify.generate 'jim.cheung'                          #=> 'public/system/rpictogrify/1/monsters/jim.cheung-1512422874962937463.svg'
-Rpictogrify.generate 'jim.cheung', theme: :avataars_male   #=> 'public/system/rpictogrify/1/avataars_male/jim.cheung-2935966159678137421.svg'
+Rpictogrify.generate 'jim.cheung'                          #=> 'public/system/rpictogrify/1/monsters/1313467160.svg'
+Rpictogrify.generate 'jim.cheung', theme: :avataars_male   #=> 'public/system/rpictogrify/1/avataars_male/1313467160.svg'
 ```
 
 ### Controller / View
@@ -57,10 +57,10 @@ include Rpictogrify::Helper
 Then you can use the following methods in views.
 
 ```ruby
-rpictogrify_for('jim', theme: :monsters)          #=> 'public/system/rpictogrify/1/monsters/jim.cheung-1512422874962937463.svg'
-rpictogrify_url('jim')                            #=> '/system/rpictogrify/1/monsters/jim.cheung-1512422874962937463.svg'
-rpictogrify_tag('jim', html: {class: :avatar})    #=> '<img class="avatar" src="/system/rpictogrify/1/monsters/jim.cheung-1512422874962937463.svg" alt="jim" />'
-rpictogrify_url_for('public/system/rpictogrify/1/monsters/jim.cheung-1512422874962937463.svg') #=> '/system/rpictogrify/1/monsters/jim.cheung-1512422874962937463.svg'
+rpictogrify_for('jim', theme: :monsters)          #=> 'public/system/rpictogrify/1/monsters/1313467160.svg'
+rpictogrify_url('jim')                            #=> '/system/rpictogrify/1/monsters/1313467160.svg'
+rpictogrify_tag('jim', html: {class: :avatar})    #=> '<img class="avatar" src="/system/rpictogrify/1/monsters/1313467160.svg" alt="jim" />'
+rpictogrify_url_for('public/system/rpictogrify/1/monsters/1313467160.svg') #=> '/system/rpictogrify/1/monsters/1313467160.svg'
 ```
 
 ### Model
@@ -79,8 +79,8 @@ end
 Then you have the following methods in user
 
 ```ruby
-@user.rpictogrify_path      #=> 'public/system/rpictogrify/1/monsters/jim.cheung-1512422874962937463.svg'
-@user.rpictogrify_url       #=> '/system/rpictogrify/1/monsters/jim.cheung-1512422874962937463.svg'
+@user.rpictogrify_path      #=> 'public/system/rpictogrify/1/monsters/1313467160.svg'
+@user.rpictogrify_url       #=> '/system/rpictogrify/1/monsters/1313467160.svg'
 ```
 
 ## Contributing
