@@ -50,8 +50,12 @@ module Rpictogrify
         dir = File.join(self.class.base_path, theme.ident)
         FileUtils.mkdir_p(dir)
 
-        File.join(dir, "#{[text, uid].join('-')}.svg")
+        File.join(dir, "#{text_hash}.svg")
       end
+    end
+
+    def text_hash
+      @text_hash ||= XXhash.xxh32(text)
     end
 
     class << self
@@ -63,7 +67,7 @@ module Rpictogrify
     private
 
     def generate_uid
-      XXhash.xxh32(text.to_s).abs.to_s.gsub('0', '1')
+      text_hash.abs.to_s.gsub('0', '1')
     end
 
     def shapes
