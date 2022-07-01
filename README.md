@@ -36,6 +36,15 @@ Rpictogrify.configure do
   self.theme      = :monsters
   # pictogram directory. default is 'public/system'
   self.base_path  = 'public/system'
+  self.themes_assets_path = Rails.root.join("app", "rpictogrify", "themes")
+end
+
+# add the custom theme on the theme asset path setup above
+module Rpictogrify
+  module Themes
+    class CustomTheme < Base
+    end
+  end
 end
 ```
 

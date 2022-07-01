@@ -8,10 +8,15 @@ module Rpictogrify
     # pictogram directory. default is 'public/system'
     attr_accessor :base_path
 
+    # pictogram themes directory. default is located inside gem instalation folder at assets/themes
+    attr_accessor :themes_assets_path
+
     def initialize
       @theme = :monsters
 
       @base_path = 'public/system'
+
+      @themes_assets_path = nil
     end
   end
 end

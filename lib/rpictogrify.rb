@@ -37,7 +37,7 @@ module Rpictogrify
     end
 
     def themes_assets_path
-      @themes_assets_path ||= assets_path.join('themes')
+      @themes_assets_path ||= config.themes_assets_path || assets_path.join('themes')
     end
 
     def path_to_url(path)

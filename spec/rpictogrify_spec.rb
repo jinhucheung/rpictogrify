@@ -12,14 +12,17 @@ describe Rpictogrify do
       Rpictogrify.configure do
         self.theme     = :avataars_female
         self.base_path = 'public'
+        self.themes_assets_path = "/somewhere"
       end
 
       expect(Rpictogrify.config.theme).to eq(:avataars_female)
       expect(Rpictogrify.config.base_path).to eq('public')
+      expect(Rpictogrify.config.themes_assets_path).to eq('/somewhere')
 
       Rpictogrify.configure do
         self.theme     = :monsters
         self.base_path = 'public/system'
+        self.themes_assets_path = nil
       end
     end
   end
