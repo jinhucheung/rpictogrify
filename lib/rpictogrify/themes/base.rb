@@ -10,14 +10,12 @@ module Rpictogrify
       include Singleton
       extend SingleForwardable
 
-      attr_reader :mapping, :resource, :ident
-      def_delegators :instance, :mapping, :resource, :ident,
+      attr_reader :mapping, :resource, :ident, :assets_path
+      def_delegators :instance, :mapping, :resource, :ident, :assets_path,
                                 :width, :height, :shapes, :colors, :symbol
 
       def initialize
-        @ident    = get_ident
-        @mapping  = parse_mapping
-        @resource = parse_resource
+        @ident = get_ident
       end
 
       def width
@@ -40,18 +38,22 @@ module Rpictogrify
         resource.at_xpath("//*[@id='#{id}']")
       end
 
+      def assets_path
+        Rpictogrify.themes_assets_path.join(ident)
+      end
+
+      def mapping
+        @mapping ||= JSON.parse(File.read(assets_path.join('mapping.json')))
+      end
+
+      def resource
+        @resource ||= Nokogiri.XML(File.read(assets_path.join('resource.svg')))
+      end
+
       private
 
       def get_ident
         Rpictogrify::Inflector.underscore(self.class.name).split('/').last
-      end
-
-      def parse_mapping
-        JSON.parse File.read(Rpictogrify.themes_assets_path.join(ident, 'mapping.json'))
-      end
-
-      def parse_resource
-        Nokogiri.XML File.read(Rpictogrify.themes_assets_path.join(ident, 'resource.svg'))
       end
 
       def view_box

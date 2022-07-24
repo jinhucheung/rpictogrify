@@ -2,6 +2,10 @@ require 'spec_helper'
 require 'rpictogrify'
 
 describe Rpictogrify do
+  after do
+    Rpictogrify.reset_config
+  end
+
   context 'configure' do
     it 'load default config' do
       expect(Rpictogrify.config.theme).to eq(:monsters)
@@ -16,11 +20,27 @@ describe Rpictogrify do
 
       expect(Rpictogrify.config.theme).to eq(:avataars_female)
       expect(Rpictogrify.config.base_path).to eq('public')
+    end
+
+    it 'register theme' do
+      custom_theme_assets_path = 'vendor/assets/rpictogrify/themes/custom'
+      expect(defined?(Rpictogrify::Themes::Custom)).to be_falsy
 
       Rpictogrify.configure do
-        self.theme     = :monsters
-        self.base_path = 'public/system'
+        self.theme     = :custom
+        self.register_theme :custom, assets_path: custom_theme_assets_path
       end
+
+      expect(defined?(Rpictogrify::Themes::Custom)).to be_truthy
+      expect(Rpictogrify::Themes::Custom.superclass).to eq Rpictogrify::Themes::Base
+      expect(Rpictogrify::Themes::Custom.assets_path).to eq Pathname.new(custom_theme_assets_path)
+      expect(Rpictogrify.config.theme).to eq(:custom)
+
+      Rpictogrify.configure do
+        self.register_theme :monsters, assets_path: Pathname.new(custom_theme_assets_path)
+      end
+      expect(Rpictogrify::Themes::Monsters.assets_path).to eq Pathname.new(custom_theme_assets_path)
+      expect(Rpictogrify::Themes::Monsters.superclass).to eq Rpictogrify::Themes::Base
     end
   end
 
@@ -44,11 +64,15 @@ describe Rpictogrify do
       path = Rpictogrify.generate 'jim.cheung'
       expect(path).to include('avataars_female')
       expect(path).to include('public/custom')
+    end
 
+    it 'return pictogram path with custom theme' do
       Rpictogrify.configure do
-        self.theme     = :monsters
-        self.base_path = 'public/system'
+        self.register_theme :custom, assets_path: 'assets/themes/male_flat'
       end
+
+      path = Rpictogrify.generate 'jim.cheung', theme: :custom
+      expect(path).to include('custom')
     end
   end
 

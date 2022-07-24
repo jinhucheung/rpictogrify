@@ -24,6 +24,10 @@ module Rpictogrify
       @config ||= Configuration.new
     end
 
+    def reset_config
+      @config = nil
+    end
+
     def configure(&block)
       config.instance_exec(&block)
     end
