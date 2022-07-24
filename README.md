@@ -36,7 +36,7 @@ Rpictogrify.configure do
   self.theme      = :monsters
   # pictogram directory. default is 'public/system'
   self.base_path  = 'public/system'
-  # register a custome theme with assets. assets see assets/themes.
+  # register a custome theme with assets. assets see assets/themes
   self.register_theme :custom, assets_path: 'vendor/assets/rpictogrify/themes/custom'
 end
 ```
