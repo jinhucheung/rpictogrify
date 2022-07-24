@@ -36,15 +36,8 @@ Rpictogrify.configure do
   self.theme      = :monsters
   # pictogram directory. default is 'public/system'
   self.base_path  = 'public/system'
-  self.themes_assets_path = Rails.root.join("app", "rpictogrify", "themes")
-end
-
-# add the custom theme on the theme asset path setup above
-module Rpictogrify
-  module Themes
-    class CustomTheme < Base
-    end
-  end
+  # register a custome theme with assets. assets see assets/themes.
+  self.register_theme :custom, assets_path: 'vendor/assets/rpictogrify/themes/custom'
 end
 ```
 
@@ -53,6 +46,7 @@ end
 ```ruby
 Rpictogrify.generate 'jim.cheung'                          #=> 'public/system/rpictogrify/1/monsters/1313467160.svg'
 Rpictogrify.generate 'jim.cheung', theme: :avataars_male   #=> 'public/system/rpictogrify/1/avataars_male/1313467160.svg'
+Rpictogrify.generate 'jim.cheung', theme: :custom          #=> 'public/system/rpictogrify/1/custom/1313467160.svg', use custom theme
 ```
 
 ### Controller / View

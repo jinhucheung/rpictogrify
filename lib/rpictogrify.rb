@@ -24,6 +24,10 @@ module Rpictogrify
       @config ||= Configuration.new
     end
 
+    def reset_config
+      @config = nil
+    end
+
     def configure(&block)
       config.instance_exec(&block)
     end
@@ -37,7 +41,7 @@ module Rpictogrify
     end
 
     def themes_assets_path
-      @themes_assets_path ||= config.themes_assets_path || assets_path.join('themes')
+      @themes_assets_path ||= assets_path.join('themes')
     end
 
     def path_to_url(path)
